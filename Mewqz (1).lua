@@ -2433,7 +2433,7 @@ Tabs.Main:AddButton({
 })
     local ToggleSkipLevelQuest = Tabs.Main:AddToggle("ToggleSkipLevelQuest", {
     Title = "Auto Kaitun",
-    Description = "Tự Động Farm Level Và Lấy Item",
+    Description = "Tự Động     Description = "Giảm Độ Họa Để Chơi Mượt Hơn", Và Lấy Item",
     Default = false })
 ToggleSkipLevelQuest:OnChanged(function(Value)
     _G.RedeemCode = Value
@@ -3691,7 +3691,10 @@ local Slider = Tabs.Settings:AddSlider("Slider", {
     })
     
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Cày Level", Default = false })
+local Toggle = Tabs.Main:AddToggle("MyToggle", 
+    {Title = "Farm Level",
+        Description = "Auto Farm Level 1 - 2550",
+     Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.AutoFarm = Value
@@ -4543,7 +4546,66 @@ end)
         MaterialList = {
           "Leather","Scrap Metal","Vampire Fang","Conjured Cocoa","Dragon Scale","Gunpowder","Fish Tail","Mini Tusk","Radioactive Material"
         }
+        Tabs.Main:AddSection("Đánh Boss  ")
+    
+    if World1 then
+		tableBoss = {"The Gorilla King","Bobby","Yeti","Mob Leader","Vice Admiral","Warden","Chief Warden","Swan","Magma Admiral","Fishman Lord","Wysper","Thunder God","Cyborg","Saber Expert"}
+	elseif World2 then
+		tableBoss = {"Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
+	elseif World3 then
+		tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
+	end
+	
+	local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Chọn Boss",
+        Values = tableBoss,
+        Multi = false,
+        Default = 1,
+    })
+
+    Dropdown:SetValue("")
+
+    Dropdown:OnChanged(function(Value)
+        _G.SelectBoss = Value
+    end)
+    
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Đánh Boss", Default = false })
+
+    Toggle:OnChanged(function(Value)
+        _G.AutoFarmBoss = Value
+    end)
+    
+    spawn(function()
+        while wait() do
+            if _G.AutoFarmBoss then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == _G.SelectBoss then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
+                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                                    until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
+                                end
+                            end
+                        end
+                    else
+                        if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
+                            topos(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(5,10,2))
+                        end
+                    end
+                end)
+            end
         end
+    end)
+        end
+        
     Tabs.Main:AddSection("Cày Nguyên Liệu ")
     local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
         Title = "Chọn",
@@ -4658,69 +4720,10 @@ local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Cày Vật Chất Kì D
                 end
             end
         end)
-    end)
-    
-    Tabs.Main:AddSection("Đánh Boss  ")
-    
-    if World1 then
-		tableBoss = {"The Gorilla King","Bobby","Yeti","Mob Leader","Vice Admiral","Warden","Chief Warden","Swan","Magma Admiral","Fishman Lord","Wysper","Thunder God","Cyborg","Saber Expert"}
-	elseif World2 then
-		tableBoss = {"Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
-	elseif World3 then
-		tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
-	end
-	
-	local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
-        Title = "Chọn Boss",
-        Values = tableBoss,
-        Multi = false,
-        Default = 1,
-    })
-
-    Dropdown:SetValue("")
-
-    Dropdown:OnChanged(function(Value)
-        _G.SelectBoss = Value
-    end)
-    
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Đánh Boss", Default = false })
-
-    Toggle:OnChanged(function(Value)
-        _G.AutoFarmBoss = Value
-    end)
-    
-    spawn(function()
-        while wait() do
-            if _G.AutoFarmBoss then
-                pcall(function()
-                    if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == _G.SelectBoss then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
-                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
-                                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                                    until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
-                                end
-                            end
-                        end
-                    else
-                        if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
-                            topos(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(5,10,2))
-                        end
-                    end
-                end)
-            end
-        end
-    end)
+    end)  
        
-       Tabs.De:AddSection("Devil Fruit Tab ")
-    local Toggle = Tabs.De:AddToggle("MyToggle", {Title = "Quay Trái", Default = false })
+       Tabs.De:AddSection("Devil Fruit")
+    local Toggle = Tabs.De:AddToggle("MyToggle", {Title = "Ramdom Trái", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.RandomFruit = Value
