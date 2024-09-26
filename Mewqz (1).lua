@@ -2330,7 +2330,7 @@ local Tabs = {
     Qs = Window:AddTab({ Title = "Main Misc", Icon = "" }),
     Sh = Window:AddTab({ Title = "Của Hàng", Icon = "" }),  
     spl = Window:AddTab({ Title = "Nâng Chỉ Số", Icon = "" }),
-    raid = Window:AddTab({ Title = "Main Raid", Icon = "" }),    
+    raid = Window:AddTab({ Title = " Auto Farm Raid", Icon = "" }),    
     Se = Window:AddTab({ Title = "Sea Event/Island", Icon = "" }),
     RC = Window:AddTab({ Title = "Trial Race V4", Icon = "" }),  
     De = Window:AddTab({ Title = "Tab Trái Cây", Icon = "" }),   
@@ -2375,7 +2375,7 @@ Tabs.infor:AddButton({
         end
     })
     
-Tabs.Main:AddSection("Main Farm Level")
+Tabs.Main:AddSection("Main Auto Farm")
 Tabs.Main:AddButton({
     Title = "Super Fix Lag [Click]",
     Description = "Giảm Độ Họa Để Chơi Mượt Hơn",
@@ -3692,9 +3692,7 @@ local Slider = Tabs.Settings:AddSlider("Slider", {
     
 
 local Toggle = Tabs.Main:AddToggle("MyToggle", 
-    {Title = "Farm Level",
-        Description = "Auto Farm Level 1 - 2550",
-     Default = false })
+    {Title = "Farm Level", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.AutoFarm = Value
@@ -4942,7 +4940,7 @@ end)
 	    end
     end)
     
-    local Toggle = Tabs.De:AddToggle("MyToggle", {Title = "Bay Đên Trái", Default = false })
+    local Toggle = Tabs.De:AddToggle("MyToggle", {Title = "Bay Đến Trái", Default = false })
 
     Toggle:OnChanged(function(Value)
         Tween_Fruit = Value
