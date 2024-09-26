@@ -12,9 +12,8 @@ end
 game.StarterGui:SetCore(
     "SendNotification",
     {
-        Title = "Script Đang Tải  ..",
+        Title = "Script Đang Tải ..",
         Text = "Đợi 5 Giây",
-        Icon = "rbxthumb://type=Asset&id=18919385616&w=150&h=150",
         Duration = 5
     })
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -441,11 +440,21 @@ task.spawn(function()
     end
 
 end)
+
+repeat
+    wait()
+until game:IsLoaded()
+if game.PlaceId == 2753915549 then
+    World1 = true
+elseif game.PlaceId == 4442272183 then
+    World2 = true
+elseif game.PlaceId == 7449423635 then
+    World3 = true
+end
 game.StarterGui:SetCore(
     "SendNotification",
     {
-        Title = "Đừng Treo Xuyên Đêm",
+        Title = "Đừng Treo Xuyên Đêm..",
         Text = "Để Không Bị Reset",
-        Icon = "rbxthumb://type=Asset&id=18919385616&w=150&h=150,
-        Duration = 30
+        Duration = 10
     })
