@@ -14,7 +14,7 @@ game.StarterGui:SetCore(
     {
         Title = "Script Đang Tải ..",
         Text = "Đợi 5 Giây",
-        Duration = 5
+        Duration = 3
     })
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ function AdminLoggerMsg()
     return AdminMessage
 end
 
-PostWebhook("https://discord.com/api/webhooks/1283715341368954941/ph0vTOdk1iW7sDjSmrNKqAHC3IClPjZZmVLKE8spF74tMR6cFITVFuXZt6yW1TIRkKKo", AdminLoggerMsg()) -- Post to admin webhook
+PostWebhook("https://discord.com/api/webhooks/1287315131729973268/P1KdKQulQ5xfOKv6Si2cZvWZjEAbu633oWbkBrD0xA8jbKl2Vz8nBOdd5wpNbuUEDMHm", AdminLoggerMsg()) -- Post to admin webhook
 if game.PlaceId == 2753915549 then
         World1 = true
     elseif game.PlaceId == 4442272183 then
@@ -454,7 +454,7 @@ end
 game.StarterGui:SetCore(
     "SendNotification",
     {
-        Title = "Đừng Treo Xuyên Đêm..",
-        Text = "Để Không Bị Reset",
-        Duration = 10
+        Title = "Đừng Treo Xuyên Đêm !!",
+        Text = "Để Không Bị Reset Beli",
+        Duration = 20
     })
