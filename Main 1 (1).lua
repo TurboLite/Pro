@@ -2329,14 +2329,14 @@ local Tabs = {
     St = Window:AddTab({ Title = "Tab Status", Icon = "" }),
     stack = Window:AddTab({ Title = "Quest/item", Icon = "" }),           
     Qs = Window:AddTab({ Title = "Main Misc", Icon = "" }),
-    Sh = Window:AddTab({ Title = "Của Hàng", Icon = "" }),  
-    spl = Window:AddTab({ Title = "Star Chỉ Số", Icon = "" }),
+    Sh = Window:AddTab({ Title = "Của Hàng", Icon = "" }),    
     raid = Window:AddTab({ Title = "Farm Raid", Icon = "" }),    
     Se = Window:AddTab({ Title = "Sea Island", Icon = "" }),
     RC = Window:AddTab({ Title = "Trial Race V4", Icon = "" }),  
     De = Window:AddTab({ Title = "Blox Trái Cây", Icon = "" }),   
-    Lc = Window:AddTab({ Title = "Dịch Chuyển", Icon = "" }),     
-    Ms = Window:AddTab({ Title = "Main Title", Icon ="" }),           
+    Lc = Window:AddTab({ Title = "Dịch Chuyển", Icon = "" }),
+    spl = Window:AddTab({ Title = "Tab Chỉ Số", Icon = "" }),     
+    Ms = Window:AddTab({ Title = "Tab Star Title", Icon ="" }),           
     Settings = Window:AddTab({ Title = "Tab Setting", Icon = "" }),
 }
 local Options = Fluent.Options
@@ -2368,9 +2368,9 @@ do
     }
 
 Window:SelectTab(1)
-Tabs.infor:AddSection("Disord My Server")
+Tabs.infor:AddSection("Nhóm Discord")
 Tabs.infor:AddButton({
-        Title = "Discord Server Turbo Lite Hub [Copy Link Server]",
+        Title = "Server Turbo Lite Hub | Copy Link",
         Description = "https://discord.gg/zKA8VNHzME",
         Callback = function()
         setclipboard("https://discord.gg/zKA8VNHzME")
@@ -2379,7 +2379,7 @@ Tabs.infor:AddButton({
     
 Tabs.Main:AddSection("Main Farm Level")
 Tabs.Main:AddButton({
-    Title = "Super Fix Lag [Click]",
+    Title = "Super Fix Lag | Click",
     Description = "Giảm Độ Họa Để Chơi Mượt Hơn",
     Callback = function()
         local function FPSBooster()
