@@ -2328,15 +2328,14 @@ local Tabs = {
     St = Window:AddTab({ Title = "Tab Status", Icon = "" }),
     stack = Window:AddTab({ Title = "Quest/item", Icon = "" }),           
     Qs = Window:AddTab({ Title = "Main Misc", Icon = "" }),
+    Sh = Window:AddTab({ Title = "Của Hàng", Icon = "" }), 
     De = Window:AddTab({ Title = "Trái Cây", Icon = "" }),   
-    Sh = Window:AddTab({ Title = "Của Hàng", Icon = "" }),  
-    spl = Window:AddTab({ Title = "Nâng Chỉ Số", Icon = "" }),
+    Se = Window:AddTab({ Title = "Sea Island", Icon = "" }),         
+    spl = Window:AddTab({ Title = "Chỉ Số", Icon = "" }),
+    RC = Window:AddTab({ Title = "Trial Tộc V4", Icon = "" }),         
     raid = Window:AddTab({ Title = "Farm Raid", Icon = "" }),
-    RC = Window:AddTab({ Title = "Trial Tộc V4", Icon = "" }),    
-    Se = Window:AddTab({ Title = "Sea Island", Icon = "" }),        
     Lc = Window:AddTab({ Title = "Dịch Chuyển", Icon = "" }),     
-    Ms = Window:AddTab({ Title = "Main Title", Icon ="" }),           
-    Settings = Window:AddTab({ Title = "Main Setting", Icon = "" }),
+    Settings = Window:AddTab({ Title = "Tab Setting", Icon = "" }),
 }
 local Options = Fluent.Options
 do
