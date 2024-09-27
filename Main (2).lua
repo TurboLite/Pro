@@ -2369,7 +2369,7 @@ do
 Window:SelectTab(1)
 Tabs.Meo:AddSection("Mirage Island")
     
-    local Toggle = Tabs.Se:AddToggle("MyToggle", {Title = "Summon Mystic Island", Default = false })
+    local Toggle = Tabs.Meo:AddToggle("MyToggle", {Title = "Summon Mystic Island", Default = false })
 
     Toggle:OnChanged(function(stati)
         _G.da = stati
@@ -2438,7 +2438,7 @@ Tabs.Meo:AddSection("Mirage Island")
 		end
         end)
       
-local Toggle = Tabs.Se:AddToggle("MyToggle", {Title = "Tween Mystic Island", Default = false })
+local Toggle = Tabs.Meo:AddToggle("MyToggle", {Title = "Tween Mystic Island", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.AutoMysticIsland = Value
@@ -2458,7 +2458,7 @@ local Toggle = Tabs.Se:AddToggle("MyToggle", {Title = "Tween Mystic Island", Def
     
   
     
-    local Toggle = Tabs.Se:AddToggle("MyToggle", {Title = "Look Moon", Default = false })
+    local Toggle = Tabs.Meo:AddToggle("MyToggle", {Title = "Look Moon", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.AutoDooHee = Value
@@ -2476,7 +2476,7 @@ local Toggle = Tabs.Se:AddToggle("MyToggle", {Title = "Tween Mystic Island", Def
     end
 end)
 
-local Toggle = Tabs.Se:AddToggle("MyToggle", {Title = "Tween Gear", Default = false })
+local Toggle = Tabs.Meo:AddToggle("MyToggle", {Title = "Tween Gear", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.TweenMGear = Value
