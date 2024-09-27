@@ -2367,6 +2367,7 @@ do
     }
 
 Window:SelectTab(1)
+Tabs.infor:AddSection("Disord My Server")
 Tabs.infor:AddButton({
         Title = "Discord Server Turbo Lite Hub [Copy Link Server]",
         Description = "https://discord.gg/zKA8VNHzME",
